@@ -1,12 +1,15 @@
 <template>
   <the-header :page="2"></the-header>
-  <section class="flex w-9/12 mx-auto justify-between mt-10"></section>
+  <main-layout>
+    <covid-questions></covid-questions>
+  </main-layout>
 </template>
 <script>
 import TheHeader from "../components/TheHeader.vue";
-
+import MainLayout from "@/components/MainLayout.vue";
+import CovidQuestions from "../components/CovidQuestions.vue";
 export default {
-  components: { TheHeader },
+  components: { TheHeader, MainLayout, CovidQuestions },
 };
 </script>
 <style scoped></style>

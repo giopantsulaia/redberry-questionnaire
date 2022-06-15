@@ -4,7 +4,7 @@
     <input
       v-model="firstname"
       type="text"
-      placeholder="First Name"
+      placeholder="იოსებ"
       name="first_name"
       required
       class="outline-none border border-gray-600 h-12 px-4"
@@ -16,7 +16,7 @@
     <input
       v-model="lastname"
       type="text"
-      placeholder="Last Name"
+      placeholder="ჯუღაშვილი"
       name="last_name"
       required
       class="outline-none border border-gray-600 h-12 px-4"
@@ -28,7 +28,7 @@
     <input
       v-model="email"
       type="email"
-      placeholder="E Mail"
+      placeholder="fbi@redberry.ge"
       name="email"
       required
       class="outline-none border border-gray-600 h-12 px-4"
