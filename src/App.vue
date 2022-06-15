@@ -1,11 +1,9 @@
 <template>
   <router-view v-slot="{ Component }">
     <transition name="route" mode="out-in">
-      <div>
-        <keep-alive>
-          <component :is="Component"></component>
-        </keep-alive>
-      </div>
+      <keep-alive>
+        <component :is="Component"></component>
+      </keep-alive>
     </transition>
   </router-view>
 </template>
@@ -13,11 +11,6 @@
 <script>
 export default {
   name: "App",
-  data() {
-    return {
-      nextPage: "",
-    };
-  },
 };
 </script>
 
@@ -26,7 +19,9 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
+
 .route-enter-from {
   opacity: 0;
   transform: translateX(100px);

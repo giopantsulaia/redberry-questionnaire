@@ -1,17 +1,17 @@
 <template>
   <div>
-    <the-header :page="3"></the-header>
+    <the-header :page="4"></the-header>
     <main-layout>
-      <vaccination-form></vaccination-form>
+      <covid-policy-form></covid-policy-form>
     </main-layout>
   </div>
 </template>
 <script>
 import TheHeader from "../components/TheHeader.vue";
 import MainLayout from "@/components/MainLayout.vue";
-import VaccinationForm from "../components/VaccinationForm.vue";
+import CovidPolicyForm from "../components/CovidPolicyForm.vue";
 export default {
-  components: { TheHeader, MainLayout, VaccinationForm },
+  components: { TheHeader, MainLayout, CovidPolicyForm },
 };
 </script>
 <style scoped></style>

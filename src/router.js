@@ -3,6 +3,8 @@ import StartQuestionnaire from "./pages/StartQuestionnaire.vue";
 import IdentifyUser from "./pages/IdentifyUser.vue";
 import CovidInfo from "./pages/CovidInfo.vue";
 import VaccinationInfo from "./pages/VaccinationInfo.vue";
+import CovidPolicy from "./pages/CovidPolicy.vue";
+import ThankYou from "./pages/ThankYou.vue";
 const router = createRouter({
   history: createWebHistory(),
   routes: [
@@ -25,6 +27,14 @@ const router = createRouter({
     {
       path: "/vaccination-info",
       component: VaccinationInfo,
+    },
+    {
+      path: "/covid-policy",
+      component: CovidPolicy,
+    },
+    {
+      path: "/thank-you",
+      component: ThankYou,
     },
   ],
 });

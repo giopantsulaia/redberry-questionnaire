@@ -1,25 +1,27 @@
 <template>
-  <transition name="fadein" mode="out-in" appear>
-    <img
-      src="../images/logo.png"
-      alt="logo"
-      class="mx-auto mt-80 pb-14 z-10"
-      width="130"
-    />
-  </transition>
-  <transition name="fade" mode="out-in" appear>
-    <div class="flex text-center justify-center z-0">
-      <router-link
-        to="/identification"
-        class="text-3xl tracking-wide whitespace-normal font-black text-[#232323] leading-10"
-      >
-        <p>
-          კითხვარის <br />
-          დაწყება
-        </p>
-      </router-link>
-    </div>
-  </transition>
+  <div>
+    <transition name="fadein" mode="out-in" appear>
+      <img
+        src="../images/logo.png"
+        alt="logo"
+        class="mx-auto mt-80 pb-14 z-10"
+        width="130"
+      />
+    </transition>
+    <transition name="fade" mode="out-in" appear>
+      <div class="flex text-center justify-center z-0">
+        <router-link
+          to="/identification"
+          class="text-3xl tracking-wide whitespace-normal font-black text-[#232323] leading-10"
+        >
+          <p>
+            კითხვარის <br />
+            დაწყება
+          </p>
+        </router-link>
+      </div>
+    </transition>
+  </div>
 </template>
 <script>
 export default {};

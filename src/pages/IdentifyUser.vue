@@ -1,8 +1,10 @@
 <template>
-  <the-header :page="1"></the-header>
-  <main-layout>
-    <user-identification-form></user-identification-form>
-  </main-layout>
+  <div>
+    <the-header :page="1"></the-header>
+    <main-layout>
+      <user-identification-form></user-identification-form>
+    </main-layout>
+  </div>
 </template>
 <script>
 import TheHeader from "../components/TheHeader.vue";

@@ -1,15 +1,17 @@
 <template>
-  <the-header :page="2"></the-header>
-  <main-layout>
-    <covid-questions></covid-questions>
-  </main-layout>
+  <div>
+    <the-header :page="2"></the-header>
+    <main-layout>
+      <covid-form></covid-form>
+    </main-layout>
+  </div>
 </template>
 <script>
 import TheHeader from "../components/TheHeader.vue";
 import MainLayout from "@/components/MainLayout.vue";
-import CovidQuestions from "../components/CovidQuestions.vue";
+import CovidForm from "../components/CovidForm.vue";
 export default {
-  components: { TheHeader, MainLayout, CovidQuestions },
+  components: { TheHeader, MainLayout, CovidForm },
 };
 </script>
 <style scoped></style>

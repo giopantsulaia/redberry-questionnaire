@@ -39,17 +39,12 @@
     <div class="mt-24 border-t border-gray-600 w-72 pt-4 text-[#626262]">
       *-ით მონიშნული ველების შევსება სავალდებულოა
     </div>
-    <div class="absolute left-1/2 bottom-36">
+    <div class="absolute left-1/2 bottom-36 z-50">
       <button><img src="../images/arrow.png" alt="next" /></button>
     </div>
   </form>
   <div class="mr-16 -translate-y-16">
     <img src="../images/img1.png" alt="" width="700" />
-    <img
-      src="../images/yellowline.png"
-      alt=""
-      class="absolute top-44 opacity-70"
-    />
   </div>
 </template>
 <script>

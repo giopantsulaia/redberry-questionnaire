@@ -18,6 +18,7 @@
         v-model="had_covid"
         type="radio"
         value="no"
+        @click="clearAntibodyValue"
         name="had_covid"
         class="outline-none my-3 px-4 mr-3"
       />არა
@@ -27,6 +28,7 @@
         v-model="had_covid"
         type="radio"
         value="have_covid_now"
+        @click="clearAntibodyValue"
         name="had_covid"
         class="outline-none my-3 px-4 mr-3"
       />
@@ -55,7 +57,6 @@
         />არა
       </div>
     </div>
-
     <div v-if="had_antibody_test" class="flex flex-col mt-6">
       <label for="antibodies_test_date" class="font-black text-xl"
         >თუ გახსოვთ,გთხვოთ მიუთითეთ ტესტის მიახლოებითი რიცხვი და ანტისხეულების
@@ -89,10 +90,10 @@
         class="outline-none border border-gray-600 my-3 px-4 mr-3 h-12"
       />
     </div>
-    <p v-if="error !== ''" class="text-red-500 text-sm">
+    <p v-if="error !== ''" class="text-red-600 text-sm">
       {{ invalid }}
     </p>
-    <div class="absolute left-1/2 bottom-36 flex">
+    <div class="absolute left-1/2 bottom-36 flex z-50">
       <button type="button" class="-ml-16" @click="navigateBack">
         <img src="../images/arrowleft.png" alt="next" />
       </button>
@@ -103,11 +104,6 @@
   </form>
   <div class="mr-16 -translate-y-16">
     <img src="../images/img2.png" alt="" width="700" />
-    <img
-      src="../images/redcircle.png"
-      alt=""
-      class="absolute top-44 opacity-70"
-    />
   </div>
 </template>
 <script>
@@ -149,11 +145,18 @@ export default {
     },
   },
   methods: {
+    clearAntibodyValue() {
+      this.had_antibody_test = null;
+    },
     submitForm() {
       this.error = this.invalid;
       if (this.error !== "") {
         return;
       }
+      this.had_antibody_test =
+        this.had_covid !== "yes" ? null : this.had_antibody_test;
+      this.had_covid_date =
+        this.had_antibody_test === null ? "" : this.had_covid_date;
       store.dispatch("saveDataToStore", {
         firstname: store.state.first_name,
         lastname: store.state.last_name,
