@@ -1,6 +1,6 @@
 <template>
   <form
-    class="flex flex-col w-4/12 h-4/5 overflow-y-auto overflow-x-hidden text-[#232323]"
+    class="flex flex-col lg:w-4/12 w-full lg:h-4/5 h-auto lg:overflow-y-auto lg:overflow-x-hidden text-[#232323] pb-8 lg:pb-0"
     @submit.prevent="submitForm"
   >
     <p class="w-11/12">
@@ -42,7 +42,7 @@
       <input
         v-model="non_formal_meetings"
         type="radio"
-        value="once_every_two_weeks"
+        value="once_in_a_two_weeks"
         name="non_formal_meetings"
         class="outline-none my-2 px-4 mr-3"
       />ორ კვირაში ერთხელ
@@ -51,7 +51,7 @@
       <input
         v-model="non_formal_meetings"
         type="radio"
-        value="once_a_month"
+        value="once_in_a_month"
         name="non_formal_meetings"
         class="outline-none my-2 px-4 mr-3"
       />თვეში ერთხელ
@@ -67,7 +67,7 @@
       <input
         v-model="number_of_days_from_office"
         type="radio"
-        value="first_dosage_and_registered_on_the_second"
+        :value="0"
         name="number_of_days_from_office"
         class="outline-none my-2 px-4 mr-3"
       />0
@@ -125,11 +125,11 @@
         >რას ფიქრობ ფიზიკურ შეკრებებზე?</label
       >
       <textarea
+        id="number_of_days_from_office"
         v-model="what_about_meetings_in_live"
         name="number_of_days_from_office"
-        id="number_of_days_from_office"
         rows="7"
-        class="border border-gray-500 resize-none outline-none px-2 w-11/12 mt-2"
+        class="border border-gray-500 resize-none outline-none px-2 lg:w-11/12 w-full mt-2"
       ></textarea>
     </div>
     <div class="mt-4">
@@ -140,25 +140,27 @@
         რა მოგწონს, რას დაამატებდი, რას შეცვლიდი?</label
       >
       <textarea
+        id="number_of_days_from_office"
         v-model="tell_us_your_opinion_about_us"
         name="number_of_days_from_office"
-        id="number_of_days_from_office"
         rows="7"
-        class="border border-gray-500 resize-none outline-none px-2 w-11/12 mt-2"
+        class="border border-gray-500 resize-none outline-none px-2 lg:w-11/12 w-full mt-2"
       ></textarea>
     </div>
     <button
-      class="absolute bottom-24 left-96 rounded-3xl bg-[#208298] w-36 text-white py-2"
+      class="lg:absolute lg:bottom-24 lg:left-96 rounded-3xl bg-[#208298] w-36 text-white py-2 mt-6"
     >
       დასრულება
     </button>
+    <div
+      class="lg:absolute lg:left-1/2 lg:bottom-36 flex justify-center ml-14 mt-8 pb-6"
+    >
+      <button type="button" class="-ml-16" @click="navigateBack">
+        <img src="../images/arrowleft.png" alt="next" />
+      </button>
+    </div>
   </form>
-  <div class="absolute left-1/2 bottom-36 flex">
-    <button type="button" class="-ml-16" @click="navigateBack">
-      <img src="../images/arrowleft.png" alt="next" />
-    </button>
-  </div>
-  <div class="mr-16 -translate-y-16">
+  <div class="mr-16 -translate-y-16 lg:block hidden">
     <img src="../images/img4.png" alt="" width="500" class="mt-10" />
   </div>
 </template>
@@ -201,10 +203,10 @@ export default {
         had_covid: store.state.had_covid,
         had_antibody_test: store.state.had_antibody_test,
         antibodies: store.state.antibodies,
-        had_covid_date: store.state.had_covid_date,
+        covid_sickness_date: store.state.covid_sickness_date,
         had_vaccine: store.state.had_vaccine,
         vaccination_stage: store.state.vaccination_stage,
-        waiting_for: store.state.waiting_for,
+        i_am_waiting: store.state.i_am_waiting,
         non_formal_meetings: this.non_formal_meetings,
         number_of_days_from_office: this.number_of_days_from_office,
         what_about_meetings_in_live: this.what_about_meetings_in_live,

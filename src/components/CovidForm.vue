@@ -1,5 +1,5 @@
 <template>
-  <form class="flex flex-col w-4/12" @submit.prevent="submitForm">
+  <form class="flex flex-col lg:w-4/12 w-full" @submit.prevent="submitForm">
     <label for="first_name" class="mb-2 font-black text-xl"
       >გაქვს გადატანილი Covid-19?*</label
     >
@@ -18,19 +18,19 @@
         v-model="had_covid"
         type="radio"
         value="no"
-        @click="clearAntibodyValue"
         name="had_covid"
         class="outline-none my-3 px-4 mr-3"
+        @click="clearAntibodyValue"
       />არა
     </div>
     <div class="flex items-center text-lg">
       <input
         v-model="had_covid"
         type="radio"
-        value="have_covid_now"
-        @click="clearAntibodyValue"
+        value="have_right_now"
         name="had_covid"
         class="outline-none my-3 px-4 mr-3"
+        @click="clearAntibodyValue"
       />
       ახლა მაქვს
     </div>
@@ -82,7 +82,7 @@
         >მიუთითე მიახლოებით პერიოდი (დღე/თვე/წელი) როდის გქონდა Covid-19*</label
       >
       <input
-        v-model="had_covid_date"
+        v-model="covid_sickness_date"
         type="text"
         placeholder="დდ/თთ/წწ"
         onfocus="(this.type='date')"
@@ -93,16 +93,18 @@
     <p v-if="error !== ''" class="text-red-600 text-sm">
       {{ invalid }}
     </p>
-    <div class="absolute left-1/2 bottom-36 flex z-50">
-      <button type="button" class="-ml-16" @click="navigateBack">
+    <div
+      class="lg:absolute lg:left-1/2 lg:bottom-36 flex justify-center z-50 mt-16 lg:mt-0 pb-8"
+    >
+      <button type="button" class="lg:-ml-16 mr-8" @click="navigateBack">
         <img src="../images/arrowleft.png" alt="next" />
       </button>
-      <button class="ml-24">
+      <button class="lg:ml-24 ml-8">
         <img src="../images/arrow.png" alt="next" />
       </button>
     </div>
   </form>
-  <div class="mr-16 -translate-y-16">
+  <div class="mr-16 lg:block hidden -translate-y-16">
     <img src="../images/img2.png" alt="" width="700" />
   </div>
 </template>
@@ -117,7 +119,7 @@ export default {
         test_date: "",
         number: "",
       },
-      had_covid_date: "",
+      covid_sickness_date: "",
       error: "",
     };
   },
@@ -130,7 +132,7 @@ export default {
         : this.testDateShown &&
           (this.antibodies.test_date === "" || this.antibodies.number === "")
         ? "*-ით მონიშნული ველების შევსება სავალდებულოა"
-        : this.hadCovidDateShown && this.had_covid_date === ""
+        : this.hadCovidDateShown && this.covid_sickness_date === ""
         ? "*-ით მონიშნული ველების შევსება სავალდებულოა"
         : "";
     },
@@ -155,8 +157,8 @@ export default {
       }
       this.had_antibody_test =
         this.had_covid !== "yes" ? null : this.had_antibody_test;
-      this.had_covid_date =
-        this.had_antibody_test === null ? "" : this.had_covid_date;
+      this.covid_sickness_date =
+        this.had_antibody_test === null ? "" : this.covid_sickness_date;
       store.dispatch("saveDataToStore", {
         firstname: store.state.first_name,
         lastname: store.state.last_name,
@@ -164,7 +166,7 @@ export default {
         had_covid: this.had_covid,
         had_antibody_test: this.had_antibody_test,
         antibodies: this.antibodies,
-        had_covid_date: this.had_covid_date,
+        covid_sickness_date: this.covid_sickness_date,
       });
       this.$router.push("/vaccination-info");
     },

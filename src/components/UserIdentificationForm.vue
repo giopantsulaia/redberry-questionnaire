@@ -1,5 +1,5 @@
 <template>
-  <form class="flex flex-col w-4/12" @submit.prevent="submitForm">
+  <form class="flex flex-col lg:w-4/12 w-full" @submit.prevent="submitForm">
     <label for="first_name" class="mb-2 font-black">სახელი*</label>
     <input
       v-model="firstname"
@@ -36,14 +36,18 @@
     <p v-if="email_error !== ''" class="text-red-500 text-sm mt-2">
       {{ emailError }}
     </p>
-    <div class="mt-24 border-t border-gray-600 w-72 pt-4 text-[#626262]">
+    <div
+      class="lg:mt-24 mt-10 border-t border-gray-600 w-72 pt-4 text-[#626262]"
+    >
       *-ით მონიშნული ველების შევსება სავალდებულოა
     </div>
-    <div class="absolute left-1/2 bottom-36 z-50">
+    <div
+      class="lg:absolute mt-12 flex justify-center left-1/2 lg:bottom-36 bottom-32 z-50"
+    >
       <button><img src="../images/arrow.png" alt="next" /></button>
     </div>
   </form>
-  <div class="mr-16 -translate-y-16">
+  <div class="lg:mr-16 lg:ml-0 ml-32 lg:block hidden -translate-y-16">
     <img src="../images/img1.png" alt="" width="700" />
   </div>
 </template>
@@ -71,7 +75,7 @@ export default {
         : "";
     },
     emailError() {
-      return !this.email.includes("@redberry.ge")
+      return this.email.substring(this.email.length - 12) !== "@redberry.ge"
         ? "გთხოვთ დარეგისტრირდეთ Redberry-ს მეილით (youremail@redberry.ge)"
         : this.email === ""
         ? "იმეილის შეყვანა აუცილებელია"

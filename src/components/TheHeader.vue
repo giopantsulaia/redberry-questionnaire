@@ -1,7 +1,7 @@
 <template>
   <header>
     <nav
-      class="w-9/12 mx-auto mt-20 border-b-2 pb-4 border-black flex justify-between text-3xl"
+      class="lg:w-9/12 w-11/12 mx-auto mt-20 border-b-2 pb-4 border-black flex justify-between text-3xl"
     >
       <img
         src="../images/redberry.png"
@@ -16,7 +16,10 @@
 <script>
 export default {
   props: {
-    page: [Number],
+    page: {
+      type: Number,
+      default: 0,
+    },
   },
 };
 </script>

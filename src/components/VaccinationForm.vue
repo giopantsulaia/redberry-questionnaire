@@ -1,5 +1,5 @@
 <template>
-  <form class="flex flex-col w-5/12" @submit.prevent="submitForm">
+  <form class="flex flex-col lg:w-5/12 w-full" @submit.prevent="submitForm">
     <label for="first_name" class="mb-2 font-black text-xl"
       >უკვე აცრილი ხარ?*</label
     >
@@ -48,15 +48,13 @@
         <input
           v-model="vaccination_stage"
           type="radio"
-          value="first_dosage_and_not_registered_on_the_second"
+          value="first_dosage_and_not_registered_yet"
           name="vaccination_stage"
           class="outline-none my-3 px-4 mr-3"
         />პირველი დოზა და არ დავრეგისტრირებულვარ მეორეზე
       </div>
       <div
-        v-if="
-          vaccination_stage === 'first_dosage_and_not_registered_on_the_second'
-        "
+        v-if="vaccination_stage === 'first_dosage_and_not_registered_yet'"
         class="w-64 mt-8 ml-6 whitespace-normal"
       >
         რომ არ გადადო,<br />
@@ -75,7 +73,7 @@
       >
       <div class="flex items-center text-lg mt-2">
         <input
-          v-model="waiting_for"
+          v-model="i_am_waiting"
           type="radio"
           value="registered_and_waiting"
           name="antibodies_test_date"
@@ -84,25 +82,25 @@
       </div>
       <div class="flex items-center text-lg">
         <input
-          v-model="waiting_for"
+          v-model="i_am_waiting"
           type="radio"
-          value="not_going_to_vaccinate"
+          value="not_planning"
           class="outline-none my-3 px-4 mr-3"
         />არ ვგეგმავ
       </div>
       <div class="flex items-center text-lg">
         <input
-          v-model="waiting_for"
+          v-model="i_am_waiting"
           type="radio"
-          value="had_covid_and_going_to_vaccinate"
+          value="had_covid_and_planning_to_be_vaccinated"
           class="outline-none my-3 px-4 mr-3"
         />გადატანილი მაქვს და ვგეგმავ აცრას
       </div>
       <div
-        v-if="waiting_for === 'had_covid_and_going_to_vaccinate'"
-        class="w-96 mt-8 ml-6 whitespace-normal"
+        v-if="i_am_waiting === 'had_covid_and_planning_to_be_vaccinated'"
+        class="md:w-96 mt-8 md:ml-6 md:whitespace-normal"
       >
-        <p>
+        <p class="">
           ახალი პროტოკოლით კოვიდის გადატანიდან 1 თვის შემდეგ შეგიძლიათ ვაქცინის
           გაკეთება.
         </p>
@@ -117,7 +115,9 @@
     <p v-if="error !== ''" class="text-red-600 text-base mt-2">
       {{ invalid }}
     </p>
-    <div class="absolute left-1/2 bottom-36 flex">
+    <div
+      class="md:absolute md:left-1/2 md:bottom-36 flex justify-center z-50 mt-24 md:mt-0 lg:pb-0 pb-6"
+    >
       <button type="button" class="-ml-16" @click="navigateBack">
         <img src="../images/arrowleft.png" alt="next" />
       </button>
@@ -126,7 +126,7 @@
       </button>
     </div>
   </form>
-  <div class="mr-16 -translate-y-16">
+  <div class="md:mr-16 -translate-y-16 md:block hidden">
     <img src="../images/img3.png" alt="" width="700" class="mt-20" />
   </div>
 </template>
@@ -137,7 +137,7 @@ export default {
     return {
       had_vaccine: null,
       vaccination_stage: "",
-      waiting_for: "",
+      i_am_waiting: "",
       error: "",
     };
   },
@@ -147,7 +147,7 @@ export default {
         ? "*-ით მონიშნული ველების შევსება სავალდებულოა"
         : this.stageShown && this.vaccination_stage === ""
         ? "*-ით მონიშნული ველების შევსება სავალდებულოა"
-        : !this.stageShown && this.waiting_for === ""
+        : !this.stageShown && this.i_am_waiting === ""
         ? "*-ით მონიშნული ველების შევსება სავალდებულოა"
         : "";
     },
@@ -161,7 +161,7 @@ export default {
       if (this.error !== "") {
         return;
       }
-      this.waiting_for = this.stageShown ? "" : this.waiting_for;
+      this.i_am_waiting = this.stageShown ? "" : this.i_am_waiting;
       this.vaccination_stage = !this.stageShown ? "" : this.vaccination_stage;
       store.dispatch("saveDataToStore", {
         firstname: store.state.first_name,
@@ -170,10 +170,10 @@ export default {
         had_covid: store.state.had_covid,
         had_antibody_test: store.state.had_antibody_test,
         antibodies: store.state.antibodies,
-        had_covid_date: store.state.had_covid_date,
+        covid_sickness_date: store.state.covid_sickness_date,
         had_vaccine: this.had_vaccine,
         vaccination_stage: this.vaccination_stage,
-        waiting_for: this.waiting_for,
+        i_am_waiting: this.i_am_waiting,
       });
       this.$router.push("/covid-policy");
     },

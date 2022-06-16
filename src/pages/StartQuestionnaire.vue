@@ -4,7 +4,7 @@
       <img
         src="../images/logo.png"
         alt="logo"
-        class="mx-auto mt-80 pb-14 z-10"
+        class="mx-auto mt-80 pb-14 z-50"
         width="130"
       />
     </transition>
@@ -44,9 +44,10 @@ p:hover {
 }
 
 .fade-enter-active {
-  transition: all 1s ease 0.8s;
+  transition: all 1s ease 1s;
 }
 .fadein-enter-from {
+  z-index: 100;
   transform: scale(20) translateY(35px);
 }
 .fadein-enter-to {
@@ -54,6 +55,6 @@ p:hover {
 }
 
 .fadein-enter-active {
-  transition: all 0.5s ease 0.2s;
+  transition: all 1s ease 0.2s;
 }
 </style>
