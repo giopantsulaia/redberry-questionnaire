@@ -1,7 +1,5 @@
 <template>
-  <section
-    class="h-screen flex flex-col items-center justify-center bg-[#232323]"
-  >
+  <section class="h-screen flex flex-col items-center justify-center">
     <div class="flex flex-col">
       <transition name="big" appear>
         <img
@@ -11,7 +9,9 @@
           width="70"
         />
       </transition>
-      <p class="text-8xl font-black text-white tracking-widest">მადლობა</p>
+      <p class="lg:text-8xl text-6xl font-black text-white tracking-widest">
+        მადლობა
+      </p>
       <transition name="small" appear>
         <img
           src="../images/thankyoustar1.png"
@@ -52,10 +52,24 @@ export default {
       .catch((error) => {
         console.error("Error:", error);
       });
+    setTimeout(() => {
+      this.$router.push("/start-questionnaire");
+    }, 5000);
   },
 };
 </script>
+
 <style scoped>
+section {
+  background-color: #232323;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
 .big-enter-from {
   transform: translateY(60px);
   opacity: 0;
