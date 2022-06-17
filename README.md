@@ -1,5 +1,3 @@
-# covid-questionary-giorgi-pantsulaia
-
 <div style="display:flex; align-items: center">
   <h1 style="position:relative; top: -6px" >Covid Questionnaire App</h1>
 </div>

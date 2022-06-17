@@ -40,6 +40,8 @@ export default {
         delete this.body[key];
       }
     });
+
+    console.log(JSON.stringify(this.body));
     fetch("https://covid19.devtest.ge/api/create", {
       method: "POST",
       body: JSON.stringify(this.body),

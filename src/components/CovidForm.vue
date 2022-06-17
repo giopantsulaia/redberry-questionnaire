@@ -1,30 +1,33 @@
 <template>
-  <form class="flex flex-col lg:w-4/12 w-full" @submit.prevent="submitForm">
+  <Form class="flex flex-col lg:w-4/12 w-full" @submit="submitForm">
     <label for="first_name" class="mb-2 font-black text-xl"
       >გაქვს გადატანილი Covid-19?*</label
     >
     <div class="flex items-center text-lg">
-      <input
+      <Field
         v-model="had_covid"
         type="radio"
         name="had_covid"
+        rules="required"
         value="yes"
         class="outline-none my-3 px-4 mr-3"
       />
       კი
     </div>
     <div class="flex items-center text-lg">
-      <input
+      <Field
         v-model="had_covid"
         type="radio"
         value="no"
+        rules="required"
         name="had_covid"
         class="outline-none my-3 px-4 mr-3"
         @click="clearAntibodyValue"
       />არა
     </div>
+
     <div class="flex items-center text-lg">
-      <input
+      <Field
         v-model="had_covid"
         type="radio"
         value="have_right_now"
@@ -34,21 +37,23 @@
       />
       ახლა მაქვს
     </div>
+    <ErrorMessage class="text-red-600 text-sm mt-1" name="had_covid" />
     <div v-if="had_covid === 'yes'" class="flex flex-col mt-6">
       <label for="had_antibody_test" class="font-black text-xl"
         >ანტისხეულების ტესტი გაქვს გაკეთებული?*</label
       >
       <div class="flex items-center text-lg">
-        <input
+        <Field
           v-model="had_antibody_test"
           type="radio"
           :value="true"
+          rules="requiredradio"
           name="had_antibody_test"
           class="outline-none my-3 px-4 mr-3"
         />კი
       </div>
       <div class="flex items-center text-lg">
-        <input
+        <Field
           v-model="had_antibody_test"
           type="radio"
           :value="false"
@@ -56,43 +61,60 @@
           class="outline-none my-3 px-4 mr-3"
         />არა
       </div>
+      <ErrorMessage
+        class="text-red-600 text-sm mt-1"
+        name="had_antibody_test"
+      />
     </div>
     <div v-if="had_antibody_test" class="flex flex-col mt-6">
       <label for="antibodies_test_date" class="font-black text-xl"
         >თუ გახსოვთ,გთხვოთ მიუთითეთ ტესტის მიახლოებითი რიცხვი და ანტისხეულების
         რაოდენობა*</label
       >
-      <input
+      <Field
         v-model="antibodies.test_date"
         type="text"
         name="antibodies_test_date"
         placeholder="რიცხვი"
+        rules="required"
         onfocus="(this.type='date')"
         class="outline-none border border-gray-600 my-3 px-4 mr-3 h-12"
       />
-      <input
+      <ErrorMessage
+        class="text-red-600 text-sm mt-1"
+        name="antibodies_test_date"
+      />
+      <Field
         v-model="antibodies.number"
         type="number"
+        name="antibodies_test_number"
         placeholder="ანტისხეულების რაოდენობა"
+        rules="required"
         class="outline-none border border-gray-600 my-3 px-4 mr-3 h-12"
+      />
+      <ErrorMessage
+        class="text-red-600 text-sm mt-1"
+        name="antibodies_test_number"
       />
     </div>
     <div v-else-if="had_antibody_test === false" class="flex flex-col mt-6">
       <label for="had_antibody_test" class="font-black text-xl"
         >მიუთითე მიახლოებით პერიოდი (დღე/თვე/წელი) როდის გქონდა Covid-19*</label
       >
-      <input
+      <Field
         v-model="covid_sickness_date"
         type="text"
         placeholder="დდ/თთ/წწ"
+        rules="required"
         onfocus="(this.type='date')"
-        name="had_antibody_test"
+        name="covid_sickness_date"
         class="outline-none border border-gray-600 my-3 px-4 mr-3 h-12"
       />
     </div>
-    <p v-if="error !== ''" class="text-red-600 text-sm">
-      {{ invalid }}
-    </p>
+    <ErrorMessage
+      class="text-red-600 text-sm mt-1"
+      name="covid_sickness_date"
+    />
     <div
       class="lg:absolute lg:left-1/2 lg:bottom-36 flex justify-center z-50 mt-16 lg:mt-0 pb-8"
     >
@@ -103,14 +125,20 @@
         <img src="../images/arrow.png" alt="next" />
       </button>
     </div>
-  </form>
+  </Form>
   <div class="mr-16 lg:block hidden -translate-y-16">
     <img src="../images/img2.png" alt="" width="700" />
   </div>
 </template>
 <script>
 import store from "../store/index.js";
+import { Form, Field, ErrorMessage } from "vee-validate";
 export default {
+  components: {
+    Form,
+    Field,
+    ErrorMessage,
+  },
   data() {
     return {
       had_covid: "",
@@ -120,45 +148,20 @@ export default {
         number: "",
       },
       covid_sickness_date: "",
-      error: "",
     };
   },
-  computed: {
-    invalid() {
-      return this.had_covid === ""
-        ? "*-ით მონიშნული ველების შევსება სავალდებულოა"
-        : this.antibodyShown && this.had_antibody_test === null
-        ? "*-ით მონიშნული ველების შევსება სავალდებულოა"
-        : this.testDateShown &&
-          (this.antibodies.test_date === "" || this.antibodies.number === "")
-        ? "*-ით მონიშნული ველების შევსება სავალდებულოა"
-        : this.hadCovidDateShown && this.covid_sickness_date === ""
-        ? "*-ით მონიშნული ველების შევსება სავალდებულოა"
-        : "";
-    },
-    antibodyShown() {
-      return this.had_covid === "yes";
-    },
-    testDateShown() {
-      return this.had_antibody_test === true;
-    },
-    hadCovidDateShown() {
-      return this.had_antibody_test === false;
-    },
-  },
+
   methods: {
     clearAntibodyValue() {
       this.had_antibody_test = null;
     },
     submitForm() {
-      this.error = this.invalid;
-      if (this.error !== "") {
-        return;
-      }
       this.had_antibody_test =
         this.had_covid !== "yes" ? null : this.had_antibody_test;
       this.covid_sickness_date =
         this.had_antibody_test === null ? "" : this.covid_sickness_date;
+      this.antibodies.test_date =
+        this.had_antibody_test === false ? "" : this.antibodies.test_date;
       store.dispatch("saveDataToStore", {
         firstname: store.state.first_name,
         lastname: store.state.last_name,
@@ -176,8 +179,3 @@ export default {
   },
 };
 </script>
-<style>
-a.router-link {
-  margin-right: 30px;
-}
-</style>

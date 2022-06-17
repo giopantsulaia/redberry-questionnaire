@@ -1,7 +1,7 @@
 <template>
-  <form
+  <Form
     class="flex flex-col lg:w-4/12 w-full lg:h-4/5 h-auto lg:overflow-y-auto lg:overflow-x-hidden text-[#232323] pb-8 lg:pb-0"
-    @submit.prevent="submitForm"
+    @submit="submitForm"
   >
     <p class="w-11/12">
       რედბერის მთავარი ღირებულება ჩვენი გუნდის თითოეული წევრია. გარემო, რომელსაც
@@ -16,13 +16,12 @@
       >რა სიხშირით შეიძლება გვქონდეს საერთო არაფორმალური ონლაინ შეხვედრები,
       სადაც ყველა სურვილისამებრ ჩაერთვება?*</label
     >
-    <p v-if="meetings_error !== ''" class="text-red-600 text-base mt-2">
-      {{ meetingsError }}
-    </p>
+
     <div class="flex items-center text-base ml-4 mt-2">
-      <input
+      <Field
         v-model="non_formal_meetings"
         type="radio"
+        rules="required"
         name="non_formal_meetings"
         value="twice_a_week"
         class="outline-none my-2 px-4 mr-3"
@@ -30,7 +29,7 @@
       კვირაში ორჯერ
     </div>
     <div class="flex items-center text-base ml-4">
-      <input
+      <Field
         v-model="non_formal_meetings"
         type="radio"
         value="once_a_week"
@@ -39,7 +38,7 @@
       />კვირაში ერთხელ
     </div>
     <div class="flex items-center text-base ml-4">
-      <input
+      <Field
         v-model="non_formal_meetings"
         type="radio"
         value="once_in_a_two_weeks"
@@ -48,7 +47,7 @@
       />ორ კვირაში ერთხელ
     </div>
     <div class="flex items-center text-base ml-4">
-      <input
+      <Field
         v-model="non_formal_meetings"
         type="radio"
         value="once_in_a_month"
@@ -56,24 +55,25 @@
         class="outline-none my-2 px-4 mr-3"
       />თვეში ერთხელ
     </div>
-
+    <ErrorMessage
+      class="text-red-600 text-sm mt-1"
+      name="non_formal_meetings"
+    />
     <label for="non_formal_meetings" class="mb-2 font-black text-base mt-6"
       >კვირაში რამდენი დღე ისურვებდი ოფისიდან მუშაობას?*</label
     >
-    <p v-if="work_from_office_error !== ''" class="text-red-600 text-base mt-2">
-      {{ workFromOfficeError }}
-    </p>
     <div class="flex items-center text-base mt-2 ml-4">
-      <input
+      <Field
         v-model="number_of_days_from_office"
         type="radio"
         :value="0"
+        rules="required"
         name="number_of_days_from_office"
         class="outline-none my-2 px-4 mr-3"
       />0
     </div>
     <div class="flex items-center text-base ml-4">
-      <input
+      <Field
         v-model="number_of_days_from_office"
         type="radio"
         :value="1"
@@ -82,7 +82,7 @@
       />1
     </div>
     <div class="flex items-center text-base ml-4">
-      <input
+      <Field
         v-model="number_of_days_from_office"
         type="radio"
         :value="2"
@@ -91,7 +91,7 @@
       />2
     </div>
     <div class="flex items-center text-base ml-4">
-      <input
+      <Field
         v-model="number_of_days_from_office"
         type="radio"
         :value="3"
@@ -100,7 +100,7 @@
       />3
     </div>
     <div class="flex items-center text-base ml-4">
-      <input
+      <Field
         v-model="number_of_days_from_office"
         type="radio"
         :value="4"
@@ -109,7 +109,7 @@
       />4
     </div>
     <div class="flex items-center text-base ml-4">
-      <input
+      <Field
         v-model="number_of_days_from_office"
         type="radio"
         :value="5"
@@ -117,32 +117,35 @@
         class="outline-none my-2 px-4 mr-3"
       />5
     </div>
-
+    <ErrorMessage
+      class="text-red-600 text-sm mt-1"
+      name="number_of_days_from_office"
+    />
     <div class="mt-4">
       <label
-        for="number_of_days_from_office"
+        for="what_about_meetings_in_live"
         class="mb-2 font-black text-base mt-6"
         >რას ფიქრობ ფიზიკურ შეკრებებზე?</label
       >
       <textarea
-        id="number_of_days_from_office"
+        id="what_about_meetings_in_live"
         v-model="what_about_meetings_in_live"
-        name="number_of_days_from_office"
+        name="what_about_meetings_in_live"
         rows="7"
         class="border border-gray-500 resize-none outline-none px-2 lg:w-11/12 w-full mt-2"
       ></textarea>
     </div>
     <div class="mt-4">
       <label
-        for="number_of_days_from_office"
+        for="tell_us_your_opinion_about_us"
         class="mb-2 font-black text-base mt-6"
         >რას ფიქრობ არსებულ გარემოზე: <br />
         რა მოგწონს, რას დაამატებდი, რას შეცვლიდი?</label
       >
       <textarea
-        id="number_of_days_from_office"
+        id="tell_us_your_opinion_about_us"
         v-model="tell_us_your_opinion_about_us"
-        name="number_of_days_from_office"
+        name="tell_us_your_opinion_about_us"
         rows="7"
         class="border border-gray-500 resize-none outline-none px-2 lg:w-11/12 w-full mt-2"
       ></textarea>
@@ -159,14 +162,20 @@
         <img src="../images/arrowleft.png" alt="next" />
       </button>
     </div>
-  </form>
+  </Form>
   <div class="mr-16 -translate-y-16 lg:block hidden">
     <img src="../images/img4.png" alt="" width="500" class="mt-10" />
   </div>
 </template>
 <script>
 import store from "../store/index.js";
+import { Form, Field, ErrorMessage } from "vee-validate";
 export default {
+  components: {
+    Form,
+    Field,
+    ErrorMessage,
+  },
   data() {
     return {
       non_formal_meetings: "",
