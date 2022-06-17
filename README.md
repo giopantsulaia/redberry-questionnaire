@@ -1,37 +1,6 @@
-# covid-questionnaire
-
-## Project setup
-
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-
-```
-npm run build
-```
-
-### Lints and fixes files
-
-```
-npm run lint
-```
-
-### Customize configuration
-
-See [Configuration Reference](https://cli.vuejs.org/config/).
-
 # covid-questionary-giorgi-pantsulaia
 
 <div style="display:flex; align-items: center">
-<img src="readme/Group1.png" alt="drawing" width="100" style="margin-right: 20px" />
   <h1 style="position:relative; top: -6px" >Covid Questionnaire App</h1>
 </div>
 
@@ -58,7 +27,6 @@ Covid Questionnaire is a multiple page form where you enter your covid related i
 
 ### Tech Stack
 
-- <img src="https://cdn.worldvectorlogo.com/logos/tailwind-css-1-2.svg" height="19" style="position: relative; top: 4px" /> [Tailwind CSS](https://tailwindcss.com/docs/installation) - css framework used in our app
 - <img src="https://cdn.worldvectorlogo.com/logos/tailwind-css-1-2.svg" height="19" style="position: relative; top: 4px" /> [Tailwind CSS](https://tailwindcss.com/docs/installation) - css framework used in our app
 
 #
