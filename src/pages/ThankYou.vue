@@ -31,6 +31,14 @@ export default {
     };
   },
   created() {
+    if (this.body.antibodies.test_date !== "") {
+      let [year, month, day] = this.body.antibodies.test_date.split("-");
+      this.body.antibodies.test_date = [month, day, year].join("/");
+    }
+    if (this.body.covid_sickness_date !== "") {
+      let [year, month, day] = this.body.covid_sickness_date.split("-");
+      this.body.covid_sickness_date = [month, day, year].join("/");
+    }
     Object.keys(this.body).forEach((key) => {
       if (
         this.body[key] === "" ||
@@ -41,7 +49,6 @@ export default {
       }
     });
 
-    console.log(JSON.stringify(this.body));
     fetch("https://covid19.devtest.ge/api/create", {
       method: "POST",
       body: JSON.stringify(this.body),
