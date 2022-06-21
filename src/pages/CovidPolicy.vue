@@ -9,7 +9,7 @@
 <script>
 import TheHeader from "@/components/TheHeader.vue";
 import MainLayout from "@/components/MainLayout.vue";
-import CovidPolicyForm from "@/components/CovidPolicyForm.vue";
+import CovidPolicyForm from "@/components/forms/CovidPolicyForm.vue";
 export default {
   components: { TheHeader, MainLayout, CovidPolicyForm },
 };

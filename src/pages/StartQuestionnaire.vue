@@ -11,7 +11,7 @@
     <transition name="fade" mode="out-in" appear>
       <div class="flex text-center justify-center z-0">
         <router-link
-          to="/identification"
+          :to="{ name: 'Identification' }"
           class="text-3xl tracking-wide whitespace-normal font-black text-[#232323] leading-10"
         >
           <p>

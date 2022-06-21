@@ -62,7 +62,7 @@ export default {
         console.error("Error:", error);
       });
     setTimeout(() => {
-      this.$router.push("/start-questionnaire");
+      this.$router.push({ name: "StartQuestionnaire" });
     }, 5000);
   },
 };

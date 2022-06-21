@@ -175,10 +175,10 @@ export default {
         vaccination_stage: this.vaccination_stage,
         i_am_waiting: this.i_am_waiting,
       });
-      this.$router.push("/covid-policy");
+      this.$router.push({ name: "CovidPolicy" });
     },
     navigateBack() {
-      this.$router.push("/covid-info");
+      this.$router.push({ name: "CovidInfo" });
     },
   },
 };

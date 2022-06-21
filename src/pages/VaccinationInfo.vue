@@ -9,7 +9,7 @@
 <script>
 import TheHeader from "@/components/TheHeader.vue";
 import MainLayout from "@/components/MainLayout.vue";
-import VaccinationForm from "@/components/VaccinationForm.vue";
+import VaccinationForm from "@/components/forms/VaccinationForm.vue";
 export default {
   components: { TheHeader, MainLayout, VaccinationForm },
 };

@@ -171,10 +171,10 @@ export default {
         antibodies: this.antibodies,
         covid_sickness_date: this.covid_sickness_date,
       });
-      this.$router.push("/vaccination-info");
+      this.$router.push({ name: "VaccinationInfo" });
     },
     navigateBack() {
-      this.$router.push("/identification");
+      this.$router.push({ name: "Identification" });
     },
   },
 };

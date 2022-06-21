@@ -15,26 +15,32 @@ const router = createRouter({
     {
       path: "/start-questionnaire",
       component: StartQuestionnaire,
+      name: "StartQuestionnaire",
     },
     {
       path: "/identification",
       component: IdentifyUser,
+      name: "Identification",
     },
     {
       path: "/covid-info",
       component: CovidInfo,
+      name: "CovidInfo",
     },
     {
       path: "/vaccination-info",
       component: VaccinationInfo,
+      name: "VaccinationInfo",
     },
     {
       path: "/covid-policy",
       component: CovidPolicy,
+      name: "CovidPolicy",
     },
     {
       path: "/thank-you",
       component: ThankYou,
+      name: "ThankYou",
     },
   ],
 });

@@ -68,7 +68,7 @@ export default {
         lastname: this.lastname,
         email: this.email,
       });
-      this.$router.push("/covid-info");
+      this.$router.push({ name: "CovidInfo" });
     },
   },
 };

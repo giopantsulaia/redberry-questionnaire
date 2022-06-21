@@ -205,10 +205,10 @@ export default {
         what_about_meetings_in_live: this.what_about_meetings_in_live,
         tell_us_your_opinion_about_us: this.tell_us_your_opinion_about_us,
       });
-      this.$router.push("/thank-you");
+      this.$router.push({ name: "ThankYou" });
     },
     navigateBack() {
-      this.$router.push("/vaccination-info");
+      this.$router.push({ name: "VaccinationInfo" });
     },
   },
 };
