@@ -126,7 +126,6 @@ export default {
         what_about_meetings_in_live: this.what_about_meetings_in_live,
         tell_us_your_opinion_about_us: this.tell_us_your_opinion_about_us,
       });
-      console.log(store.state);
       this.$router.push({ name: "ThankYou" });
     },
     navigateBack() {

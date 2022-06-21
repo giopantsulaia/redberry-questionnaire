@@ -147,7 +147,6 @@ export default {
         vaccination_stage: this.vaccination_stage,
         i_am_waiting: this.i_am_waiting,
       });
-      console.log(store.state);
       this.$router.push({ name: "CovidPolicy" });
     },
     navigateBack() {

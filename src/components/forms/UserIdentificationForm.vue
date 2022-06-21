@@ -72,7 +72,6 @@ export default {
         lastname: this.lastname,
         email: this.email,
       });
-      console.log(store.state);
       this.$router.push({ name: "CovidInfo" });
     },
   },
