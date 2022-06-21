@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <div class="text-center">
     <transition name="fadein" mode="out-in" appear>
       <img
         src="@/assets/images/logo.png"
-        alt="logo"
+        alt="redberry-logo"
         class="mx-auto mt-80 pb-14 z-50"
         width="130"
       />
@@ -27,10 +27,6 @@
 export default {};
 </script>
 <style scoped>
-body {
-  background-color: #b5c0c7;
-  text-align: center;
-}
 p:hover {
   text-shadow: #ffffff 2px 2px 0px, #9c9c9c 4px 4px 0px,
     40px -40px 5px rgba(255, 255, 255, 0);

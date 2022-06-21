@@ -3,58 +3,43 @@
     class="flex flex-col lg:w-4/12 w-full lg:h-4/5 h-auto lg:overflow-y-auto lg:overflow-x-hidden text-[#232323] pb-8 lg:pb-0"
     @submit="submitForm"
   >
-    <p class="w-11/12">
-      რედბერის მთავარი ღირებულება ჩვენი გუნდის თითოეული წევრია. გარემო, რომელსაც
-      ჩვენი თანამშრომლები ქმნით, ბევრისთვის არის და ყოფილა წლების განმავლობაში
-      მიზნებისთვის ერთად ბრძოლის მიზეზი, ბევრისთვის კი — ჩვენთან გადმოსვლის.
-    </p>
-    <p class="mt-4 pb-8">
-      პანდემიის პერიოდში ერთმანეთსაც იშვიათად ვნახულობთ პირისპირ და ყოველდღიური
-      კომუნიკაციაც გაიშვიათდა.
-    </p>
+    <redberry-info />
     <label for="non_formal_meetings" class="mb-2 font-black text-base"
       >რა სიხშირით შეიძლება გვქონდეს საერთო არაფორმალური ონლაინ შეხვედრები,
       სადაც ყველა სურვილისამებრ ჩაერთვება?*</label
     >
-
-    <div class="flex items-center text-base ml-4 mt-2">
-      <Field
-        v-model="non_formal_meetings"
-        type="radio"
-        rules="required"
-        name="non_formal_meetings"
-        value="twice_a_week"
-        class="outline-none my-2 px-4 mr-3"
-      />
-      კვირაში ორჯერ
-    </div>
-    <div class="flex items-center text-base ml-4">
-      <Field
-        v-model="non_formal_meetings"
-        type="radio"
-        value="once_a_week"
-        name="non_formal_meetings"
-        class="outline-none my-2 px-4 mr-3"
-      />კვირაში ერთხელ
-    </div>
-    <div class="flex items-center text-base ml-4">
-      <Field
-        v-model="non_formal_meetings"
-        type="radio"
-        value="once_in_a_two_weeks"
-        name="non_formal_meetings"
-        class="outline-none my-2 px-4 mr-3"
-      />ორ კვირაში ერთხელ
-    </div>
-    <div class="flex items-center text-base ml-4">
-      <Field
-        v-model="non_formal_meetings"
-        type="radio"
-        value="once_in_a_month"
-        name="non_formal_meetings"
-        class="outline-none my-2 px-4 mr-3"
-      />თვეში ერთხელ
-    </div>
+    <covid-info-radio-input
+      v-model="non_formal_meetings"
+      name="non_formal_meetings"
+      rules="required"
+      class="text-base ml-4 mt-2"
+      label="კვირაში ორჯერ"
+      value="twice_a_week"
+    />
+    <covid-info-radio-input
+      v-model="non_formal_meetings"
+      name="non_formal_meetings"
+      rules="required"
+      class="text-base ml-4"
+      label="კვირაში ერთხელ"
+      value="once_a_week"
+    />
+    <covid-info-radio-input
+      v-model="non_formal_meetings"
+      name="non_formal_meetings"
+      rules="required"
+      class="text-base ml-4"
+      label="ორ კვირაში ერთხელ"
+      value="once_in_a_two_weeks"
+    />
+    <covid-info-radio-input
+      v-model="non_formal_meetings"
+      name="non_formal_meetings"
+      rules="required"
+      class="text-base ml-4"
+      label="თვეში ერთხელ"
+      value="once_in_a_month"
+    />
     <ErrorMessage
       class="text-red-600 text-sm mt-1"
       name="non_formal_meetings"
@@ -62,94 +47,31 @@
     <label for="non_formal_meetings" class="mb-2 font-black text-base mt-6"
       >კვირაში რამდენი დღე ისურვებდი ოფისიდან მუშაობას?*</label
     >
-    <div class="flex items-center text-base mt-2 ml-4">
-      <Field
-        v-model="number_of_days_from_office"
-        type="radio"
-        :value="0"
-        rules="required"
-        name="number_of_days_from_office"
-        class="outline-none my-2 px-4 mr-3"
-      />0
-    </div>
-    <div class="flex items-center text-base ml-4">
-      <Field
-        v-model="number_of_days_from_office"
-        type="radio"
-        :value="1"
-        name="number_of_days_from_office"
-        class="outline-none my-2 px-4 mr-3"
-      />1
-    </div>
-    <div class="flex items-center text-base ml-4">
-      <Field
-        v-model="number_of_days_from_office"
-        type="radio"
-        :value="2"
-        name="number_of_days_from_office"
-        class="outline-none my-2 px-4 mr-3"
-      />2
-    </div>
-    <div class="flex items-center text-base ml-4">
-      <Field
-        v-model="number_of_days_from_office"
-        type="radio"
-        :value="3"
-        name="number_of_days_from_office"
-        class="outline-none my-2 px-4 mr-3"
-      />3
-    </div>
-    <div class="flex items-center text-base ml-4">
-      <Field
-        v-model="number_of_days_from_office"
-        type="radio"
-        :value="4"
-        name="number_of_days_from_office"
-        class="outline-none my-2 px-4 mr-3"
-      />4
-    </div>
-    <div class="flex items-center text-base ml-4">
-      <Field
-        v-model="number_of_days_from_office"
-        type="radio"
-        :value="5"
-        name="number_of_days_from_office"
-        class="outline-none my-2 px-4 mr-3"
-      />5
-    </div>
+    <days-from-office
+      :value="0"
+      v-model="number_of_days_from_office"
+      class="mt-2"
+    />
+    <days-from-office :value="1" v-model="number_of_days_from_office" />
+    <days-from-office :value="2" v-model="number_of_days_from_office" />
+    <days-from-office :value="3" v-model="number_of_days_from_office" />
+    <days-from-office :value="4" v-model="number_of_days_from_office" />
+    <days-from-office :value="5" v-model="number_of_days_from_office" />
     <ErrorMessage
       class="text-red-600 text-sm mt-1"
       name="number_of_days_from_office"
     />
-    <div class="mt-4">
-      <label
-        for="what_about_meetings_in_live"
-        class="mb-2 font-black text-base mt-6"
-        >რას ფიქრობ ფიზიკურ შეკრებებზე?</label
-      >
-      <textarea
-        id="what_about_meetings_in_live"
-        v-model="what_about_meetings_in_live"
-        name="what_about_meetings_in_live"
-        rows="7"
-        class="border border-gray-500 resize-none outline-none px-2 lg:w-11/12 w-full mt-2"
-      ></textarea>
-    </div>
-    <div class="mt-4">
-      <label
-        for="tell_us_your_opinion_about_us"
-        class="mb-2 font-black text-base mt-6"
-        >რას ფიქრობ არსებულ გარემოზე: <br />
-        რა მოგწონს, რას დაამატებდი, რას შეცვლიდი?</label
-      >
-      <textarea
-        id="tell_us_your_opinion_about_us"
-        v-model="tell_us_your_opinion_about_us"
-        name="tell_us_your_opinion_about_us"
-        rows="7"
-        class="border border-gray-500 resize-none outline-none px-2 lg:w-11/12 w-full mt-2"
-      ></textarea>
-    </div>
+    <optional-text-area
+      v-model="what_about_meetings_in_live"
+      name="what_about_meetings_in_live"
+      label="რას ფიქრობ ფიზიკურ შეკრებებზე?"
+    />
+    <optional-text-area
+      v-model="tell_us_your_opinion_about_us"
+      name="tell_us_your_opinion_about_us"
+      label="რას ფიქრობ არსებულ გარემოზე: 
+        რა მოგწონს, რას დაამატებდი, რას შეცვლიდი?"
+    />
     <button
       class="lg:absolute lg:bottom-24 lg:left-96 rounded-3xl bg-[#208298] w-36 text-white py-2 mt-6"
     >
@@ -159,22 +81,34 @@
       class="lg:absolute lg:left-1/2 lg:bottom-36 flex justify-center ml-14 mt-8 pb-6"
     >
       <button type="button" class="-ml-16" @click="navigateBack">
-        <img src="@/assets/icons/arrowleft.svg" alt="next" />
+        <img src="@/assets/icons/arrow-left.svg" alt="previous-page" />
       </button>
     </div>
   </Form>
   <div class="mr-16 -translate-y-16 lg:block hidden">
-    <img src="@/assets/images/img4.png" alt="" width="500" class="mt-10" />
+    <img
+      src="@/assets/images/bycicle-boy.png"
+      alt="bycicle-boy"
+      width="500"
+      class="mt-10"
+    />
   </div>
 </template>
 <script>
 import store from "@/store/index.js";
-import { Form, Field, ErrorMessage } from "vee-validate";
+import { Form, ErrorMessage } from "vee-validate";
+import CovidInfoRadioInput from "../CovidInfoRadioInput.vue";
+import DaysFromOffice from "../DaysFromOffice.vue";
+import OptionalTextArea from "../OptionalTextArea.vue";
+import RedberryInfo from "../RedberryInfo.vue";
 export default {
   components: {
     Form,
-    Field,
     ErrorMessage,
+    CovidInfoRadioInput,
+    DaysFromOffice,
+    OptionalTextArea,
+    RedberryInfo,
   },
   data() {
     return {
@@ -186,25 +120,13 @@ export default {
   },
   methods: {
     submitForm() {
-      if (this.meetings_error !== "" || this.work_from_office_error !== "") {
-        return;
-      }
-      store.dispatch("saveDataToStore", {
-        firstname: store.state.first_name,
-        lastname: store.state.last_name,
-        email: store.state.email,
-        had_covid: store.state.had_covid,
-        had_antibody_test: store.state.had_antibody_test,
-        antibodies: store.state.antibodies,
-        covid_sickness_date: store.state.covid_sickness_date,
-        had_vaccine: store.state.had_vaccine,
-        vaccination_stage: store.state.vaccination_stage,
-        i_am_waiting: store.state.i_am_waiting,
+      store.dispatch("storeCovidPolicyData", {
         non_formal_meetings: this.non_formal_meetings,
         number_of_days_from_office: this.number_of_days_from_office,
         what_about_meetings_in_live: this.what_about_meetings_in_live,
         tell_us_your_opinion_about_us: this.tell_us_your_opinion_about_us,
       });
+      console.log(store.state);
       this.$router.push({ name: "ThankYou" });
     },
     navigateBack() {
@@ -218,19 +140,16 @@ export default {
   width: 5px;
 }
 
-/* Track */
 ::-webkit-scrollbar-track {
   box-shadow: inset 0 0 5px grey;
   border-radius: 10px;
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
   background: #fe3b1f;
   border-radius: 10px;
 }
 
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(77, 77, 77);
 }

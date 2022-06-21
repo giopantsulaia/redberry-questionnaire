@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@font-face {
+  font-family: "Anonymous Pro";
+  src: local("Anonymous Pro"),
+    url("./assets/fonts/Anonymous_Pro/anonymous-pro-bold.ttf")
+      format("truetype");
+}

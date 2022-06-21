@@ -38,11 +38,15 @@
     <div
       class="lg:absolute mt-12 flex justify-center left-1/2 lg:bottom-36 bottom-32 z-50"
     >
-      <button><img src="@/assets/icons/arrow.svg" alt="next" /></button>
+      <button><img src="@/assets/icons/arrow-right.svg" alt="next" /></button>
     </div>
   </Form>
   <div class="lg:mr-16 lg:ml-0 ml-32 lg:block hidden -translate-y-16">
-    <img src="@/assets/images/img1.png" alt="" width="700" />
+    <img
+      src="@/assets/images/boy-and-girl.png"
+      alt="boy-and-girl"
+      width="700"
+    />
   </div>
 </template>
 <script>
@@ -63,11 +67,12 @@ export default {
   },
   methods: {
     submitForm() {
-      store.dispatch("saveDataToStore", {
+      store.dispatch("storeIdentificationData", {
         firstname: this.firstname,
         lastname: this.lastname,
         email: this.email,
       });
+      console.log(store.state);
       this.$router.push({ name: "CovidInfo" });
     },
   },

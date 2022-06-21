@@ -12,9 +12,3 @@ defineRule("redberry_email", (value) => {
   }
   return true;
 });
-defineRule("requiredradio", (value) => {
-  if (value === null) {
-    return "*-ით მონიშნული ველების შევსება სავალდებულოა";
-  }
-  return true;
-});

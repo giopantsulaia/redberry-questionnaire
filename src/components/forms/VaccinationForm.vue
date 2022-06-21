@@ -3,59 +3,49 @@
     <label for="first_name" class="mb-2 font-black text-xl"
       >უკვე აცრილი ხარ?*</label
     >
-    <div class="flex items-center text-lg">
-      <Field
-        v-model="had_vaccine"
-        type="radio"
-        rules="requiredradio"
-        name="had_vaccine"
-        :value="true"
-        class="outline-none my-3 px-4 mr-3"
-      />
-      კი
-    </div>
-    <div class="flex items-center text-lg">
-      <Field
-        v-model="had_vaccine"
-        type="radio"
-        :value="false"
-        name="had_vaccine"
-        class="outline-none my-3 px-4 mr-3"
-      />არა
-    </div>
+    <covid-info-radio-input
+      v-model="had_vaccine"
+      rules="required"
+      name="had_vaccine"
+      label="კი"
+      value="true"
+      @click="clearWaitingForValue"
+    />
+    <covid-info-radio-input
+      v-model="had_vaccine"
+      rules="required"
+      name="had_vaccine"
+      label="არა"
+      value="false"
+      @click="clearVaccinationStageValue"
+    />
     <ErrorMessage class="text-red-600 text-sm mt-1" name="had_vaccine" />
-    <div v-if="had_vaccine" class="flex flex-col mt-6">
+    <div v-if="had_vaccine === 'true'" class="flex flex-col mt-6">
       <label for="vaccination_stage" class="font-black text-xl"
         >აირჩიე რა ეტაპზე ხარ*</label
       >
-      <div class="flex items-center text-lg mt-2">
-        <Field
-          v-model="vaccination_stage"
-          type="radio"
-          rules="required"
-          value="first_dosage_and_registered_on_the_second"
-          name="vaccination_stage"
-          class="outline-none my-3 px-4 mr-3"
-        />პირველი დოზა და დარეგისტრირებული ვარ მეორეზე
-      </div>
-      <div class="flex items-center text-lg">
-        <Field
-          v-model="vaccination_stage"
-          type="radio"
-          value="fully_vaccinated"
-          name="vaccination_stage"
-          class="outline-none my-3 px-4 mr-3"
-        />სრულად აცრილი ვარ
-      </div>
-      <div class="flex items-center text-lg">
-        <Field
-          v-model="vaccination_stage"
-          type="radio"
-          value="first_dosage_and_not_registered_yet"
-          name="vaccination_stage"
-          class="outline-none my-3 px-4 mr-3"
-        />პირველი დოზა და არ დავრეგისტრირებულვარ მეორეზე
-      </div>
+      <covid-info-radio-input
+        v-model="vaccination_stage"
+        class="mt-2"
+        rules="required"
+        label="პირველი დოზა და დარეგისტრირებული ვარ მეორეზე"
+        name="vaccination_stage"
+        value="first_dosage_and_registered_on_the_second"
+      />
+      <covid-info-radio-input
+        v-model="vaccination_stage"
+        label="სრულად აცრილი ვარ"
+        rules="required"
+        name="vaccination_stage"
+        value="fully_vaccinated"
+      />
+      <covid-info-radio-input
+        v-model="vaccination_stage"
+        rules="required"
+        label="პირველი დოზა და არ დავრეგისტრირებულვარ მეორეზე"
+        name="vaccination_stage"
+        value="first_dosage_and_not_registered_yet"
+      />
       <ErrorMessage
         class="text-red-600 text-sm mt-1"
         name="vaccination_stage"
@@ -74,79 +64,61 @@
         </a>
       </div>
     </div>
-    <div v-else-if="had_vaccine === false" class="flex flex-col mt-6">
+    <div v-else-if="had_vaccine === 'false'" class="flex flex-col mt-6">
       <label for="antibodies_test_date" class="font-black text-xl"
         >რას ელოდები?*</label
       >
-      <div class="flex items-center text-lg mt-2">
-        <Field
-          v-model="i_am_waiting"
-          type="radio"
-          rules="required"
-          value="registered_and_waiting"
-          name="i_am_waiting"
-          class="outline-none my-3 px-4 mr-3"
-        />დარეგისტრირებული ვარ და ველოდები რიცხვს
-      </div>
-      <div class="flex items-center text-lg">
-        <Field
-          v-model="i_am_waiting"
-          type="radio"
-          name="i_am_waiting"
-          value="not_planning"
-          class="outline-none my-3 px-4 mr-3"
-        />არ ვგეგმავ
-      </div>
-      <div class="flex items-center text-lg">
-        <Field
-          v-model="i_am_waiting"
-          type="radio"
-          name="i_am_waiting"
-          value="had_covid_and_planning_to_be_vaccinated"
-          class="outline-none my-3 px-4 mr-3"
-        />გადატანილი მაქვს და ვგეგმავ აცრას
-      </div>
+      <covid-info-radio-input
+        v-model="i_am_waiting"
+        class="mt-2"
+        rules="required"
+        label="დარეგისტრირებული ვარ და ველოდები რიცხვს"
+        name="i_am_waiting"
+        value="registered_and_waiting"
+      />
+      <covid-info-radio-input
+        v-model="i_am_waiting"
+        rules="required"
+        label="არ ვგეგმავ"
+        name="i_am_waiting"
+        value="not_planning"
+      />
+      <covid-info-radio-input
+        v-model="i_am_waiting"
+        rules="required"
+        label="გადატანილი მაქვს და ვგეგმავ აცრას"
+        name="i_am_waiting"
+        value="had_covid_and_planning_to_be_vaccinated"
+      />
       <ErrorMessage class="text-red-600 text-sm mt-1" name="i_am_waiting" />
-      <div
+      <vaccination-link-suggestion
         v-if="i_am_waiting === 'had_covid_and_planning_to_be_vaccinated'"
-        class="md:w-96 mt-8 md:ml-6 md:whitespace-normal"
-      >
-        <p class="">
-          ახალი პროტოკოლით კოვიდის გადატანიდან 1 თვის შემდეგ შეგიძლიათ ვაქცინის
-          გაკეთება.
-        </p>
-        <p class="mt-6">
-          👉 რეგისტრაციის ბმული
-          <a href="https://booking.moh.gov.ge/" class="text-blue-600">
-            https://booking.moh.gov.ge/</a
-          >
-        </p>
-      </div>
+      />
     </div>
-
-    <div
-      class="md:absolute md:left-1/2 md:bottom-36 flex justify-center z-50 mt-24 md:mt-0 lg:pb-0 pb-6"
-    >
-      <button type="button" class="-ml-16" @click="navigateBack">
-        <img src="@/assets/icons/arrowleft.svg" alt="next" />
-      </button>
-      <button class="ml-24 z-50">
-        <img src="@/assets/icons/arrow.svg" alt="next" />
-      </button>
-    </div>
+    <navigation-arrows @onClick="navigateBack" />
   </Form>
   <div class="md:mr-16 -translate-y-16 md:block hidden">
-    <img src="@/assets/images/img3.png" alt="" width="700" class="mt-20" />
+    <img
+      src="@/assets/images/doctor.png"
+      alt="doctor"
+      width="700"
+      class="mt-20"
+    />
   </div>
 </template>
 <script>
 import store from "@/store/index.js";
-import { Form, Field, ErrorMessage } from "vee-validate";
+import { Form, ErrorMessage } from "vee-validate";
+import CovidInfoRadioInput from "@/components/CovidInfoRadioInput.vue";
+import VaccinationLinkSuggestion from "@/components/VaccinationLinkSuggestion.vue";
+import NavigationArrows from "../NavigationArrows.vue";
 export default {
   components: {
     Form,
-    Field,
     ErrorMessage,
+    CovidInfoRadioInput,
+    VaccinationLinkSuggestion,
+    NavigationArrows,
   },
   data() {
     return {
@@ -160,21 +132,22 @@ export default {
     clearVaccinationStageValue() {
       this.vaccination_stage = "";
     },
+    clearWaitingForValue() {
+      this.i_am_waiting = "";
+    },
     submitForm() {
-      this.i_am_waiting = this.had_vaccine ? null : this.i_am_waiting;
       this.vaccination_stage = !this.had_vaccine ? "" : this.vaccination_stage;
-      store.dispatch("saveDataToStore", {
-        firstname: store.state.first_name,
-        lastname: store.state.last_name,
-        email: store.state.email,
-        had_covid: store.state.had_covid,
-        had_antibody_test: store.state.had_antibody_test,
-        antibodies: store.state.antibodies,
-        covid_sickness_date: store.state.covid_sickness_date,
-        had_vaccine: this.had_vaccine,
+      store.dispatch("storeVaccinationData", {
+        had_vaccine:
+          this.had_vaccine === "false"
+            ? false
+            : this.had_vaccine === "true"
+            ? true
+            : null,
         vaccination_stage: this.vaccination_stage,
         i_am_waiting: this.i_am_waiting,
       });
+      console.log(store.state);
       this.$router.push({ name: "CovidPolicy" });
     },
     navigateBack() {

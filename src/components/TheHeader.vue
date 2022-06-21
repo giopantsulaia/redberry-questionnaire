@@ -18,14 +18,12 @@ export default {
   props: {
     page: {
       type: Number,
-      default: 0,
+      required: true,
     },
   },
 };
 </script>
 <style scoped>
-@import url("https://fonts.googleapis.com/css2?family=Anonymous+Pro:wght@700&family=Inter&display=swap");
-
 nav {
   font-family: "Anonymous Pro", monospace;
 }

@@ -3,7 +3,7 @@
     <div class="flex flex-col">
       <transition name="big" appear>
         <img
-          src="@/assets/icons/thankyoustar1.svg"
+          src="@/assets/icons/thank-you-star.svg"
           alt="star"
           class="mb-6 ml-6"
           width="70"
@@ -14,7 +14,7 @@
       </p>
       <transition name="small" appear>
         <img
-          src="@/assets/icons/thankyoustar1.svg"
+          src="@/assets/icons/thank-you-star.svg"
           alt="star"
           class="self-end mr-10"
           width="35"
@@ -48,7 +48,6 @@ export default {
         delete this.body[key];
       }
     });
-
     fetch("https://covid19.devtest.ge/api/create", {
       method: "POST",
       body: JSON.stringify(this.body),

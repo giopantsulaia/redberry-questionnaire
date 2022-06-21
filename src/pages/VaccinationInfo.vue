@@ -14,4 +14,3 @@ export default {
   components: { TheHeader, MainLayout, VaccinationForm },
 };
 </script>
-<style scoped></style>
