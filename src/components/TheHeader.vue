@@ -4,7 +4,7 @@
       class="lg:w-9/12 w-11/12 mx-auto mt-20 border-b-2 pb-4 border-black flex justify-between text-3xl"
     >
       <img
-        src="../images/redberry.png"
+        src="@/assets/images/redberry.png"
         alt="redberry"
         width="150"
         class="h-6"

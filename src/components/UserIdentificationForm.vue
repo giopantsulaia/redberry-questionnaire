@@ -38,16 +38,16 @@
     <div
       class="lg:absolute mt-12 flex justify-center left-1/2 lg:bottom-36 bottom-32 z-50"
     >
-      <button><img src="../images/arrow.png" alt="next" /></button>
+      <button><img src="@/assets/icons/arrow.svg" alt="next" /></button>
     </div>
   </Form>
   <div class="lg:mr-16 lg:ml-0 ml-32 lg:block hidden -translate-y-16">
-    <img src="../images/img1.png" alt="" width="700" />
+    <img src="@/assets/images/img1.png" alt="" width="700" />
   </div>
 </template>
 <script>
 import { Form, Field, ErrorMessage } from "vee-validate";
-import store from "../store/index.js";
+import store from "@/store/index.js";
 export default {
   components: {
     Form,

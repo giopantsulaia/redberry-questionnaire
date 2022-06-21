@@ -159,16 +159,16 @@
       class="lg:absolute lg:left-1/2 lg:bottom-36 flex justify-center ml-14 mt-8 pb-6"
     >
       <button type="button" class="-ml-16" @click="navigateBack">
-        <img src="../images/arrowleft.png" alt="next" />
+        <img src="@/assets/icons/arrowleft.svg" alt="next" />
       </button>
     </div>
   </Form>
   <div class="mr-16 -translate-y-16 lg:block hidden">
-    <img src="../images/img4.png" alt="" width="500" class="mt-10" />
+    <img src="@/assets/images/img4.png" alt="" width="500" class="mt-10" />
   </div>
 </template>
 <script>
-import store from "../store/index.js";
+import store from "@/store/index.js";
 import { Form, Field, ErrorMessage } from "vee-validate";
 export default {
   components: {
@@ -182,26 +182,10 @@ export default {
       number_of_days_from_office: null,
       what_about_meetings_in_live: "",
       tell_us_your_opinion_about_us: "",
-      meetings_error: "",
-      work_from_office_error: "",
     };
-  },
-  computed: {
-    meetingsError() {
-      return this.non_formal_meetings === ""
-        ? "*-ით მონიშნული ველების შევსება სავალდებულოა"
-        : "";
-    },
-    workFromOfficeError() {
-      return this.number_of_days_from_office === null
-        ? "*-ით მონიშნული ველების შევსება სავალდებულოა"
-        : "";
-    },
   },
   methods: {
     submitForm() {
-      this.meetings_error = this.meetingsError;
-      this.work_from_office_error = this.workFromOfficeError;
       if (this.meetings_error !== "" || this.work_from_office_error !== "") {
         return;
       }

@@ -25,6 +25,8 @@ Covid Questionnaire is a multiple page form where you enter your covid related i
 
 ### Tech Stack
 
+- <img src="https://vuejs.org/images/logo.png" height="19" style="position: relative; top: 4px" /> [Vue 3](https://vuejs.org/guide/introduction.html) - Vue 3.
+- <img src="https://s3.amazonaws.com/coursetro/posts/144-full.png" height="19" style="position: relative; top: 4px" /> [VueX](https://vuex.vuejs.org/installation.html) - state management pattern + library used in our app.
 - <img src="https://cdn.worldvectorlogo.com/logos/tailwind-css-1-2.svg" height="19" style="position: relative; top: 4px" /> [Tailwind CSS](https://tailwindcss.com/docs/installation) - css framework used in our app
 
 #
@@ -41,20 +43,6 @@ git clone https://github.com/RedberryInternship/covid-questionary-giorgi-pantsul
 
 ```sh
 npm install
-```
-
-3\.Next, you need to configure ESLint and Prettier in order for the project to be clean
-
-```sh
-npm install --save-dev --save-exact prettier
-```
-
-```sh
-npm install --save-dev eslint eslint-plugin-vue
-```
-
-```sh
-npm install eslint-config-prettier --save-dev
 ```
 
 ##### Now, You need to use these extensions!

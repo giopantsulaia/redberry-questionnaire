@@ -2,7 +2,7 @@
   <div>
     <transition name="fadein" mode="out-in" appear>
       <img
-        src="../images/logo.png"
+        src="@/assets/images/logo.png"
         alt="logo"
         class="mx-auto mt-80 pb-14 z-50"
         width="130"

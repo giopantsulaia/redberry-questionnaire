@@ -128,19 +128,19 @@
       class="md:absolute md:left-1/2 md:bottom-36 flex justify-center z-50 mt-24 md:mt-0 lg:pb-0 pb-6"
     >
       <button type="button" class="-ml-16" @click="navigateBack">
-        <img src="../images/arrowleft.png" alt="next" />
+        <img src="@/assets/icons/arrowleft.svg" alt="next" />
       </button>
       <button class="ml-24 z-50">
-        <img src="../images/arrow.png" alt="next" />
+        <img src="@/assets/icons/arrow.svg" alt="next" />
       </button>
     </div>
   </Form>
   <div class="md:mr-16 -translate-y-16 md:block hidden">
-    <img src="../images/img3.png" alt="" width="700" class="mt-20" />
+    <img src="@/assets/images/img3.png" alt="" width="700" class="mt-20" />
   </div>
 </template>
 <script>
-import store from "../store/index.js";
+import store from "@/store/index.js";
 import { Form, Field, ErrorMessage } from "vee-validate";
 export default {
   components: {

@@ -3,7 +3,7 @@
     <div class="flex flex-col">
       <transition name="big" appear>
         <img
-          src="../images/thankyoustar1.png"
+          src="@/assets/icons/thankyoustar1.svg"
           alt="star"
           class="mb-6 ml-6"
           width="70"
@@ -14,7 +14,7 @@
       </p>
       <transition name="small" appear>
         <img
-          src="../images/thankyoustar1.png"
+          src="@/assets/icons/thankyoustar1.svg"
           alt="star"
           class="self-end mr-10"
           width="35"
@@ -23,7 +23,7 @@
   </section>
 </template>
 <script>
-import store from "../store/index.js";
+import store from "@/store/index.js";
 export default {
   data() {
     return {
