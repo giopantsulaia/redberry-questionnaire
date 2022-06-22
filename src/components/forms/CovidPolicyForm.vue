@@ -8,7 +8,7 @@
       >რა სიხშირით შეიძლება გვქონდეს საერთო არაფორმალური ონლაინ შეხვედრები,
       სადაც ყველა სურვილისამებრ ჩაერთვება?*</label
     >
-    <covid-info-radio-input
+    <radio-input
       v-model="non_formal_meetings"
       name="non_formal_meetings"
       rules="required"
@@ -16,7 +16,7 @@
       label="კვირაში ორჯერ"
       value="twice_a_week"
     />
-    <covid-info-radio-input
+    <radio-input
       v-model="non_formal_meetings"
       name="non_formal_meetings"
       rules="required"
@@ -24,7 +24,7 @@
       label="კვირაში ერთხელ"
       value="once_a_week"
     />
-    <covid-info-radio-input
+    <radio-input
       v-model="non_formal_meetings"
       name="non_formal_meetings"
       rules="required"
@@ -32,7 +32,7 @@
       label="ორ კვირაში ერთხელ"
       value="once_in_a_two_weeks"
     />
-    <covid-info-radio-input
+    <radio-input
       v-model="non_formal_meetings"
       name="non_formal_meetings"
       rules="required"
@@ -48,15 +48,15 @@
       >კვირაში რამდენი დღე ისურვებდი ოფისიდან მუშაობას?*</label
     >
     <days-from-office
-      :value="0"
       v-model="number_of_days_from_office"
+      :value="0"
       class="mt-2"
     />
-    <days-from-office :value="1" v-model="number_of_days_from_office" />
-    <days-from-office :value="2" v-model="number_of_days_from_office" />
-    <days-from-office :value="3" v-model="number_of_days_from_office" />
-    <days-from-office :value="4" v-model="number_of_days_from_office" />
-    <days-from-office :value="5" v-model="number_of_days_from_office" />
+    <days-from-office v-model="number_of_days_from_office" :value="1" />
+    <days-from-office v-model="number_of_days_from_office" :value="2" />
+    <days-from-office v-model="number_of_days_from_office" :value="3" />
+    <days-from-office v-model="number_of_days_from_office" :value="4" />
+    <days-from-office v-model="number_of_days_from_office" :value="5" />
     <ErrorMessage
       class="text-red-600 text-sm mt-1"
       name="number_of_days_from_office"
@@ -97,15 +97,15 @@
 <script>
 import store from "@/store/index.js";
 import { Form, ErrorMessage } from "vee-validate";
-import CovidInfoRadioInput from "../CovidInfoRadioInput.vue";
-import DaysFromOffice from "../DaysFromOffice.vue";
-import OptionalTextArea from "../OptionalTextArea.vue";
-import RedberryInfo from "../RedberryInfo.vue";
+import RadioInput from "@/components/RadioInput.vue";
+import DaysFromOffice from "@/components/DaysFromOffice.vue";
+import OptionalTextArea from "@/components/OptionalTextArea.vue";
+import RedberryInfo from "@/components/RedberryInfo.vue";
 export default {
   components: {
     Form,
     ErrorMessage,
-    CovidInfoRadioInput,
+    RadioInput,
     DaysFromOffice,
     OptionalTextArea,
     RedberryInfo,

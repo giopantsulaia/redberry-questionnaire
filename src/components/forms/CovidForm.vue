@@ -3,14 +3,14 @@
     <label for="first_name" class="mb-2 font-black text-xl"
       >გაქვს გადატანილი Covid-19?*</label
     >
-    <covid-info-radio-input
+    <radio-input
       v-model="had_covid"
       name="had_covid"
       rules="required"
       value="yes"
       label="კი"
-    ></covid-info-radio-input>
-    <covid-info-radio-input
+    ></radio-input>
+    <radio-input
       v-model="had_covid"
       name="had_covid"
       rules="required"
@@ -18,7 +18,7 @@
       label="არა"
       @click="clearAntibodyValue"
     />
-    <covid-info-radio-input
+    <radio-input
       v-model="had_covid"
       name="had_covid"
       rules="required"
@@ -31,7 +31,7 @@
       <label for="had_antibody_test" class="font-black text-xl"
         >ანტისხეულების ტესტი გაქვს გაკეთებული?*</label
       >
-      <covid-info-radio-input
+      <radio-input
         v-model="had_antibody_test"
         name="had_antibody_test"
         rules="required"
@@ -39,7 +39,7 @@
         label="კი"
         @click="clearCovidSicknessValue"
       />
-      <covid-info-radio-input
+      <radio-input
         v-model="had_antibody_test"
         name="had_antibody_test"
         rules="required"
@@ -61,14 +61,14 @@
         v-model="antibodies.test_date"
         name="antibodies_test_date"
         rules="required"
-        inputType="(this.type='date')"
+        input-type="(this.type='date')"
         placeholder="რიცხვი"
       />
       <anti-bodies
         v-model="antibodies.number"
         name="antibodies_test_number"
         rules="required"
-        inputType="(this.type='number')"
+        input-type="(this.type='number')"
         placeholder="ანტისხეულების რაოდენობა"
       />
     </div>
@@ -90,7 +90,7 @@
       class="text-red-600 text-sm mt-1"
       name="covid_sickness_date"
     />
-    <navigation-arrows @onClick="navigateBack" />
+    <navigation-arrows @on-click="navigateBack" />
   </Form>
   <div class="mr-16 lg:block hidden -translate-y-16">
     <img src="@/assets/images/bubble-boy.png" alt="bubble-boy" width="700" />
@@ -99,16 +99,16 @@
 <script>
 import store from "@/store/index.js";
 import { Form, Field, ErrorMessage } from "vee-validate";
-import CovidInfoRadioInput from "@/components/CovidInfoRadioInput.vue";
-import AntiBodies from "../AntiBodies.vue";
-import NavigationArrows from "../NavigationArrows.vue";
+import RadioInput from "@/components/RadioInput.vue";
+import AntiBodies from "@/components/AntiBodies.vue";
+import NavigationArrows from "@/components/NavigationArrows.vue";
 
 export default {
   components: {
     Form,
     Field,
     ErrorMessage,
-    CovidInfoRadioInput,
+    RadioInput,
     AntiBodies,
     NavigationArrows,
   },

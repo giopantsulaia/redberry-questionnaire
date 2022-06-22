@@ -3,7 +3,7 @@
     <label for="first_name" class="mb-2 font-black text-xl"
       >უკვე აცრილი ხარ?*</label
     >
-    <covid-info-radio-input
+    <radio-input
       v-model="had_vaccine"
       rules="required"
       name="had_vaccine"
@@ -11,7 +11,7 @@
       value="true"
       @click="clearWaitingForValue"
     />
-    <covid-info-radio-input
+    <radio-input
       v-model="had_vaccine"
       rules="required"
       name="had_vaccine"
@@ -24,7 +24,7 @@
       <label for="vaccination_stage" class="font-black text-xl"
         >აირჩიე რა ეტაპზე ხარ*</label
       >
-      <covid-info-radio-input
+      <radio-input
         v-model="vaccination_stage"
         class="mt-2"
         rules="required"
@@ -32,14 +32,14 @@
         name="vaccination_stage"
         value="first_dosage_and_registered_on_the_second"
       />
-      <covid-info-radio-input
+      <radio-input
         v-model="vaccination_stage"
         label="სრულად აცრილი ვარ"
         rules="required"
         name="vaccination_stage"
         value="fully_vaccinated"
       />
-      <covid-info-radio-input
+      <radio-input
         v-model="vaccination_stage"
         rules="required"
         label="პირველი დოზა და არ დავრეგისტრირებულვარ მეორეზე"
@@ -68,7 +68,7 @@
       <label for="antibodies_test_date" class="font-black text-xl"
         >რას ელოდები?*</label
       >
-      <covid-info-radio-input
+      <radio-input
         v-model="i_am_waiting"
         class="mt-2"
         rules="required"
@@ -76,14 +76,14 @@
         name="i_am_waiting"
         value="registered_and_waiting"
       />
-      <covid-info-radio-input
+      <radio-input
         v-model="i_am_waiting"
         rules="required"
         label="არ ვგეგმავ"
         name="i_am_waiting"
         value="not_planning"
       />
-      <covid-info-radio-input
+      <radio-input
         v-model="i_am_waiting"
         rules="required"
         label="გადატანილი მაქვს და ვგეგმავ აცრას"
@@ -95,7 +95,7 @@
         v-if="i_am_waiting === 'had_covid_and_planning_to_be_vaccinated'"
       />
     </div>
-    <navigation-arrows @onClick="navigateBack" />
+    <navigation-arrows @on-click="navigateBack" />
   </Form>
   <div class="md:mr-16 -translate-y-16 md:block hidden">
     <img
@@ -109,14 +109,14 @@
 <script>
 import store from "@/store/index.js";
 import { Form, ErrorMessage } from "vee-validate";
-import CovidInfoRadioInput from "@/components/CovidInfoRadioInput.vue";
+import RadioInput from "@/components/RadioInput.vue";
 import VaccinationLinkSuggestion from "@/components/VaccinationLinkSuggestion.vue";
-import NavigationArrows from "../NavigationArrows.vue";
+import NavigationArrows from "@/components/NavigationArrows.vue";
 export default {
   components: {
     Form,
     ErrorMessage,
-    CovidInfoRadioInput,
+    RadioInput,
     VaccinationLinkSuggestion,
     NavigationArrows,
   },
