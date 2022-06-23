@@ -99,9 +99,9 @@
 <script>
 import store from "@/store/index.js";
 import { Form, Field, ErrorMessage } from "vee-validate";
-import RadioInput from "@/components/RadioInput.vue";
-import AntiBodies from "@/components/AntiBodies.vue";
-import NavigationArrows from "@/components/NavigationArrows.vue";
+import RadioInput from "@/components/UI/inputs/RadioInput.vue";
+import AntiBodies from "@/components/UI/inputs/AntiBodies.vue";
+import NavigationArrows from "@/components/UI/icons/NavigationArrows.vue";
 
 export default {
   components: {

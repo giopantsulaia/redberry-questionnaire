@@ -7,9 +7,9 @@
   </div>
 </template>
 <script>
-import TheHeader from "@/components/TheHeader.vue";
-import UserIdentificationForm from "@/components/forms/UserIdentificationForm.vue";
-import MainLayout from "@/components/MainLayout.vue";
+import TheHeader from "@/components/layout/TheHeader.vue";
+import UserIdentificationForm from "@/components/UI/forms/UserIdentificationForm.vue";
+import MainLayout from "@/components/layout/MainLayout.vue";
 export default {
   components: { TheHeader, UserIdentificationForm, MainLayout },
 };

@@ -7,9 +7,9 @@
   </div>
 </template>
 <script>
-import TheHeader from "@/components/TheHeader.vue";
-import MainLayout from "@/components/MainLayout.vue";
-import CovidForm from "@/components/forms/CovidForm.vue";
+import TheHeader from "@/components/layout/TheHeader.vue";
+import MainLayout from "@/components/layout/MainLayout.vue";
+import CovidForm from "@/components/UI/forms/CovidForm.vue";
 export default {
   components: { TheHeader, MainLayout, CovidForm },
 };

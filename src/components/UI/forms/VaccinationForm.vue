@@ -24,27 +24,10 @@
       <label for="vaccination_stage" class="font-black text-xl"
         >აირჩიე რა ეტაპზე ხარ*</label
       >
-      <radio-input
+      <radio-input-group
         v-model="vaccination_stage"
+        :options="stage_options"
         class="mt-2"
-        rules="required"
-        label="პირველი დოზა და დარეგისტრირებული ვარ მეორეზე"
-        name="vaccination_stage"
-        value="first_dosage_and_registered_on_the_second"
-      />
-      <radio-input
-        v-model="vaccination_stage"
-        label="სრულად აცრილი ვარ"
-        rules="required"
-        name="vaccination_stage"
-        value="fully_vaccinated"
-      />
-      <radio-input
-        v-model="vaccination_stage"
-        rules="required"
-        label="პირველი დოზა და არ დავრეგისტრირებულვარ მეორეზე"
-        name="vaccination_stage"
-        value="first_dosage_and_not_registered_yet"
       />
       <ErrorMessage
         class="text-red-600 text-sm mt-1"
@@ -68,27 +51,11 @@
       <label for="antibodies_test_date" class="font-black text-xl"
         >რას ელოდები?*</label
       >
-      <radio-input
+      <radio-input-group
         v-model="i_am_waiting"
+        :options="waiting_options"
         class="mt-2"
-        rules="required"
-        label="დარეგისტრირებული ვარ და ველოდები რიცხვს"
-        name="i_am_waiting"
-        value="registered_and_waiting"
-      />
-      <radio-input
-        v-model="i_am_waiting"
-        rules="required"
-        label="არ ვგეგმავ"
-        name="i_am_waiting"
-        value="not_planning"
-      />
-      <radio-input
-        v-model="i_am_waiting"
-        rules="required"
-        label="გადატანილი მაქვს და ვგეგმავ აცრას"
-        name="i_am_waiting"
-        value="had_covid_and_planning_to_be_vaccinated"
+        @click="log(this.i_am_waiting)"
       />
       <ErrorMessage class="text-red-600 text-sm mt-1" name="i_am_waiting" />
       <vaccination-link-suggestion
@@ -109,9 +76,10 @@
 <script>
 import store from "@/store/index.js";
 import { Form, ErrorMessage } from "vee-validate";
-import RadioInput from "@/components/RadioInput.vue";
-import VaccinationLinkSuggestion from "@/components/VaccinationLinkSuggestion.vue";
-import NavigationArrows from "@/components/NavigationArrows.vue";
+import RadioInput from "@/components/UI/inputs/RadioInput.vue";
+import VaccinationLinkSuggestion from "@/components/UI/paragraphs/VaccinationLinkSuggestion.vue";
+import NavigationArrows from "@/components/UI/icons/NavigationArrows.vue";
+import RadioInputGroup from "@/components/UI/inputs/RadioInputGroup.vue";
 export default {
   components: {
     Form,
@@ -119,16 +87,54 @@ export default {
     RadioInput,
     VaccinationLinkSuggestion,
     NavigationArrows,
+    RadioInputGroup,
   },
   data() {
     return {
       had_vaccine: null,
       vaccination_stage: "",
       i_am_waiting: "",
+      stage_options: [
+        {
+          label: "პირველი დოზა და დარეგისტრირებული ვარ მეორეზე",
+          value: "first_dosage_and_registered_on_the_second",
+          name: "vaccination_stage",
+        },
+        {
+          label: "სრულად აცრილი ვარ",
+          value: "fully_vaccinated",
+          name: "vaccination_stage",
+        },
+        {
+          label: "პირველი დოზა და არ დავრეგისტრირებულვარ მეორეზე",
+          value: "first_dosage_and_not_registered_yet",
+          name: "vaccination_stage",
+        },
+      ],
+      waiting_options: [
+        {
+          label: "დარეგისტრირებული ვარ და ველოდები რიცხვს",
+          value: "registered_and_waiting",
+          name: "i_am_waiting",
+        },
+        {
+          label: "არ ვგეგმავ",
+          value: "not_planning",
+          name: "i_am_waiting",
+        },
+        {
+          label: "გადატანილი მაქვს და ვგეგმავ აცრას",
+          value: "had_covid_and_planning_to_be_vaccinated",
+          name: "i_am_waiting",
+        },
+      ],
     };
   },
 
   methods: {
+    log(d) {
+      console.log(d);
+    },
     clearVaccinationStageValue() {
       this.vaccination_stage = "";
     },

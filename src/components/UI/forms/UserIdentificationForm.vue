@@ -1,35 +1,29 @@
 <template>
   <Form class="flex flex-col lg:w-4/12 w-full" @submit="submitForm">
-    <label for="first_name" class="mb-2 font-black">სახელი*</label>
-    <Field
+    <text-input
       v-model="firstname"
-      type="text "
-      rules="required|min:2|max:255|alpha"
-      placeholder="იოსებ"
       name="first_name"
-      class="outline-none border border-gray-600 h-12 px-4"
+      placeholder="იოსებ"
+      rules="required|min:2|max:255|alpha"
+      label="სახელი*"
     />
-    <ErrorMessage class="text-red-600 text-sm mt-1" name="first_name" />
-    <label for="last_name" class="mt-8 mb-2 font-black">გვარი*</label>
-    <Field
+    <text-input
       v-model="lastname"
-      type="text"
+      name="last_name"
       placeholder="ჯუღაშვილი"
       rules="required|min:2|max:255|alpha"
-      name="last_name"
-      class="outline-none border border-gray-600 h-12 px-4"
+      label="გვარი*"
+      class="mt-8"
     />
-    <ErrorMessage class="text-red-600 text-sm mt-1" name="last_name" />
-    <label for="email" class="mt-8 mb-2 font-black">მეილი*</label>
-    <Field
+    <text-input
       v-model="email"
       name="email"
       type="email"
       placeholder="fbi@redberry.ge"
       rules="required|email|redberry_email"
-      class="outline-none border border-gray-600 h-12 px-4"
+      label="მეილი*"
+      class="mt-8"
     />
-    <ErrorMessage class="text-red-600 text-sm mt-1" name="email" />
     <div
       class="lg:mt-24 mt-10 border-t border-gray-600 w-72 pt-4 text-[#626262]"
     >
@@ -50,13 +44,13 @@
   </div>
 </template>
 <script>
-import { Form, Field, ErrorMessage } from "vee-validate";
+import { Form } from "vee-validate";
 import store from "@/store/index.js";
+import TextInput from "../inputs/TextInput.vue";
 export default {
   components: {
     Form,
-    Field,
-    ErrorMessage,
+    TextInput,
   },
   data() {
     return {

@@ -8,37 +8,10 @@
       >რა სიხშირით შეიძლება გვქონდეს საერთო არაფორმალური ონლაინ შეხვედრები,
       სადაც ყველა სურვილისამებრ ჩაერთვება?*</label
     >
-    <radio-input
+    <radio-input-group
       v-model="non_formal_meetings"
-      name="non_formal_meetings"
-      rules="required"
-      class="text-base ml-4 mt-2"
-      label="კვირაში ორჯერ"
-      value="twice_a_week"
-    />
-    <radio-input
-      v-model="non_formal_meetings"
-      name="non_formal_meetings"
-      rules="required"
-      class="text-base ml-4"
-      label="კვირაში ერთხელ"
-      value="once_a_week"
-    />
-    <radio-input
-      v-model="non_formal_meetings"
-      name="non_formal_meetings"
-      rules="required"
-      class="text-base ml-4"
-      label="ორ კვირაში ერთხელ"
-      value="once_in_a_two_weeks"
-    />
-    <radio-input
-      v-model="non_formal_meetings"
-      name="non_formal_meetings"
-      rules="required"
-      class="text-base ml-4"
-      label="თვეში ერთხელ"
-      value="once_in_a_month"
+      :options="options"
+      class="ml-4"
     />
     <ErrorMessage
       class="text-red-600 text-sm mt-1"
@@ -97,18 +70,18 @@
 <script>
 import store from "@/store/index.js";
 import { Form, ErrorMessage } from "vee-validate";
-import RadioInput from "@/components/RadioInput.vue";
-import DaysFromOffice from "@/components/DaysFromOffice.vue";
-import OptionalTextArea from "@/components/OptionalTextArea.vue";
-import RedberryInfo from "@/components/RedberryInfo.vue";
+import DaysFromOffice from "@/components/UI/inputs/DaysFromOffice.vue";
+import OptionalTextArea from "@/components/UI/inputs/OptionalTextArea.vue";
+import RedberryInfo from "@/components/UI/paragraphs/RedberryInfo.vue";
+import RadioInputGroup from "@/components/UI/inputs/RadioInputGroup.vue";
 export default {
   components: {
     Form,
     ErrorMessage,
-    RadioInput,
     DaysFromOffice,
     OptionalTextArea,
     RedberryInfo,
+    RadioInputGroup,
   },
   data() {
     return {
@@ -116,6 +89,23 @@ export default {
       number_of_days_from_office: null,
       what_about_meetings_in_live: "",
       tell_us_your_opinion_about_us: "",
+      options: [
+        {
+          label: "კვირაში ორჯერ",
+          value: "twice_a_week",
+          name: "non_formal_meetings",
+        },
+        {
+          label: "კვირაში ერთხელ",
+          value: "once_a_week",
+          name: "non_formal_meetings",
+        },
+        {
+          label: "ორ კვირაში ერთხელ",
+          value: "once_in_a_two_weeks",
+          name: "non_formal_meetings",
+        },
+      ],
     };
   },
   methods: {
