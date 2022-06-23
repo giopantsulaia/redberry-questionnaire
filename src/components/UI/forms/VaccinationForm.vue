@@ -55,7 +55,6 @@
         v-model="i_am_waiting"
         :options="waiting_options"
         class="mt-2"
-        @click="log(this.i_am_waiting)"
       />
       <ErrorMessage class="text-red-600 text-sm mt-1" name="i_am_waiting" />
       <vaccination-link-suggestion
@@ -132,9 +131,6 @@ export default {
   },
 
   methods: {
-    log(d) {
-      console.log(d);
-    },
     clearVaccinationStageValue() {
       this.vaccination_stage = "";
     },
